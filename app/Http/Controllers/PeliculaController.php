@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pelicula;
 
 class PeliculaController extends Controller
 {
@@ -13,7 +14,9 @@ class PeliculaController extends Controller
      */
     public function index()
     {
-        //
+        //$peliculas = Pelicula::all();
+        $peliculas = Pelicula::paginate(15);
+        return view('peliculas.index',["peliculas" => $peliculas]);
     }
 
     /**

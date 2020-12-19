@@ -56,10 +56,14 @@
 
     <!-- Hero content: will be in the middle -->    
     @if(session("exito"))
-    <div class="notification is-success m-4"><button class="delete"></button>{{session("exito")}}</div>
+    <div class="container mt-2">
+    <div class="notification is-info has-text-centered"><button class="delete"></button>{{session("exito")}}</div>
+    </div>
     @endif
     @if(session("error"))
-    <div class="notification is-danger m-4"><button class="delete"></button>{{session("error")}}</div>
+    <div class="container mt-2">
+    <div class="notification is-danger has-text-centered"><button class="delete"></button>{{session("error")}}</div>
+    </div>
     @endif
     <div class="hero-body container">      
       @yield("contenido")            

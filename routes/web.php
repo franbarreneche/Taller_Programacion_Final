@@ -19,3 +19,7 @@ Route::get('/', function () {
 });
 
 Route::resource('peliculas',PeliculaController::class);
+
+Route::view('home', 'home')
+	->name('home')
+	->middleware(['auth', 'verified']);

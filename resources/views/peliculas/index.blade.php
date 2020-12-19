@@ -1,5 +1,8 @@
 @extends('layout.layout')
 
+@section('titulo','PELICULAS')
+@section('subtitulo','Listado con todas las películas')
+
 @section('contenido')
 <div class="card">
   <header class="card-header">

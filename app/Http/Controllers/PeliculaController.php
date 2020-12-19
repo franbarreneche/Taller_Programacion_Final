@@ -26,7 +26,7 @@ class PeliculaController extends Controller
      */
     public function create()
     {
-        //
+        return redirect()->route("peliculas.index")->with("exito","hola manola");
     }
 
     /**
@@ -37,7 +37,7 @@ class PeliculaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -48,7 +48,7 @@ class PeliculaController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect()->route("peliculas.index")->with("error","hola manola");
     }
 
     /**
@@ -59,7 +59,8 @@ class PeliculaController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd("edit");
+        redirect('welcome');
     }
 
     /**
@@ -82,6 +83,7 @@ class PeliculaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd("destoryed");
+        redirect('welcome');
     }
 }

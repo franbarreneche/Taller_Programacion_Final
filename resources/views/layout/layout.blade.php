@@ -48,11 +48,21 @@
           </div>
         </div>
       </header>
+      <div class="container has-text-centered py-6">
+          <p class="title">@yield("titulo")</p>
+          <p class="subtitle">@yield("subtitulo")</p>
+      </div>
     </div>
 
-    <!-- Hero content: will be in the middle -->
-    <div class="hero-body container">
-      @yield("contenido")
+    <!-- Hero content: will be in the middle -->    
+    @if(session("exito"))
+    <div class="notification is-success m-4"><button class="delete"></button>{{session("exito")}}</div>
+    @endif
+    @if(session("error"))
+    <div class="notification is-danger m-4"><button class="delete"></button>{{session("error")}}</div>
+    @endif
+    <div class="hero-body container">      
+      @yield("contenido")            
     </div>
 
     <!-- Hero footer: will stick at the bottom -->
@@ -63,6 +73,17 @@
       </div>
     </div>
   </section>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+  (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+    var $notification = $delete.parentNode;
+
+    $delete.addEventListener('click', () => {
+      $notification.parentNode.removeChild($notification);
+    });
+  });
+});
+</script>
 </body>
 
 </html>

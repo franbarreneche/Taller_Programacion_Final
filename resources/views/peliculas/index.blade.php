@@ -29,10 +29,14 @@
                     <td>{{(Illuminate\Support\Carbon::parse($pelicula->fecha_estreno))->format('d-m-Y')}}</td>
                     <td>{{$pelicula->idioma}}</td>
                     <td>{{$pelicula->rating}}</td>
-                    <td>
+                    <td class="is-grouped">
+                        <form action="{{route('peliculas.destroy',$pelicula->id)}}" method="POST">
+                        @method("DELETE")
+                        @csrf
                         <a class="button is-small is-primary" href="{{route('peliculas.show',$pelicula->id)}}">Ver</a>
                         <a class="button is-small is-info" href="{{route('peliculas.edit',$pelicula->id)}}">Editar</a>
-                        <a class="button is-small is-danger">Elim</a>
+                        <button type="submit" class="button is-small is-danger">Elim</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

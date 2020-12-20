@@ -19,15 +19,18 @@
         <div class="columns">
             <div class="column">
                 <p class="subtitle">{{$pelicula->titulo}}</p>
-                <p><strong>Fecha de Estreno: </strong> {{$pelicula->fecha_estreno}}</p>
-                <p><strong>Rating: </strong> {{$pelicula->rating}}</p>
-                <p><strong>Todo Público: </strong> {{$pelicula->todo_publico? __('Yes') : __('No')}}</p>
-                <p><strong>Idioma principal: </strong> {{$pelicula->idioma}}</p>
-                <p><strong>Director: </strong> Acá va el directo</p>
-                <p><strong>Actores: </strong> Acá van los actores</p>
-                <p><strong>Tag/Tags: </strong> Acá van los tag/tags</p>
-                <p><strong>Resumen: </strong> {{$pelicula->resumen}}</p>
-                <p><strong>Usuario que la agregó: </strong> {{$pelicula->user_id}}</p>
+                <table class="table is-striped is-fullwidth">
+                 <tr><td>Fecha de Estreno:</td><td>{{(Illuminate\Support\Carbon::parse($pelicula->fecha_estreno))->format('d-m-Y')}}</td></tr>
+                 <tr><td>Rating:</td><td>{{$pelicula->rating}}</td></tr>
+                 <tr><td>Todo Público:</td><td>{{$pelicula->todo_publico? __('Yes') : __('No')}}</td></tr>
+                 <tr><td>Idioma Principal:</td><td>{{$pelicula->idioma}}</td></tr>
+                 <tr><td>Director:</td><td>Aca va el director</td></tr>
+                 <tr><td>Actores:</td><td>Aca van los actores</td></tr>
+                 <tr><td>Tag/Tags:</td><td>Aca van los tags</td></tr>
+                 <tr><td>Resumen:</td><td>{{$pelicula->resumen}}</td></tr>
+                 <tr><td>Agregada por:</td><td>{{$pelicula->user_id}}</td></tr>
+                   
+                </table>    
             </div>
             <div class="column">
                 <figure class="image is-2by3">

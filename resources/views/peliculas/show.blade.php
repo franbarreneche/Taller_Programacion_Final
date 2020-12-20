@@ -28,7 +28,7 @@
                  <tr><td>Actores:</td><td>Aca van los actores</td></tr>
                  <tr><td>Tag/Tags:</td><td>Aca van los tags</td></tr>
                  <tr><td>Resumen:</td><td>{{$pelicula->resumen}}</td></tr>
-                 <tr><td>Agregada por:</td><td>{{$pelicula->user_id}}</td></tr>
+                 <tr><td>Agregada por:</td><td>{{$pelicula->user->name}}</td></tr>
                    
                 </table>    
             </div>

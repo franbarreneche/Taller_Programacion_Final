@@ -1,6 +1,6 @@
-@extends('layout.layout')
+@extends('layouts.app')
 
-@section('contenido')
+@section('content')
       <div class="box">
           <p class="title">Bienvenido a el programa</p>
           <a class="button is-primary">Registrarse</a>

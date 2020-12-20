@@ -14,12 +14,23 @@ use App\Http\Controllers\PeliculaController;
 |
 */
 
+
+//ruta de ingreso a la web
 Route::get('/', function () {
     return view('welcome');
 });
 
+
+//rutas para el manejo de peliculas
 Route::resource('peliculas',PeliculaController::class);
 
+
+//ruta para la pagina prinicpal luego de logearse
 Route::view('home', 'home')
 	->name('home')
 	->middleware(['auth', 'verified']);
+
+//ruta para un ligero cambio en la ruta para la actualizacion del perfil en Fortify
+Route::prefix('user')->middleware(['auth', 'verified'])->group(function () {
+	Route::view('profile', 'profile.show');
+});

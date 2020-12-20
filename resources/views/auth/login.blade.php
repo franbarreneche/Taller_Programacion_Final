@@ -1,52 +1,55 @@
 @extends('layouts.app')
 
+@section('title', 'Login')
+
 @section('content')
-    @if (session('status'))
-        <div>
-            {{ session('status') }}
-        </div>
-    @endif
+    <x-authentication-card>
+        <h1 class="title is-4 has-text-grey-light mb-4">
+            {{ __('Login') }}
+        </h1>
 
-    @if ($errors->any())
-        <div>
-            <div>{{ __('Whoops! Something went wrong.') }}</div>
+        <x-validation-errors />
 
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+            <div class="field">
+                <label for="email" class="label">
+                    {{ __('Email') }}
+                </label>
+                <div class="control">
+                    <input class="input" type="email" id="email" name="email" value="{{ old('email') }}" required autofocus />
+                </div>
+            </div>
 
-        <div>
-            <label>{{ __('Email') }}</label>
-            <input type="email" name="email" value="{{ old('email') }}" required autofocus />
-        </div>
+            <div class="field">
+                <label for="password" class="label">
+                    {{ __('Password') }}
+                </label>
+                <div class="control">
+                    <input class="input" type="password" id="password" name="password" required autocomplete="current-password" />
+                </div>
+            </div>
 
-        <div>
-            <label>{{ __('Password') }}</label>
-            <input type="password" name="password" required autocomplete="current-password" />
-        </div>
+            <div class="field">
+                <div class="control">
+                    <label for="remember" class="checkbox">
+                        <input type="checkbox" id="remember" name="remember" />
+                        {{ __('Remember me') }}
+                    </label>
+                </div>
+            </div>
 
-        <div>
-            <label>{{ __('Remember me') }}</label>
-            <input type="checkbox" name="remember">
-        </div>
-
-        @if (Route::has('password.request'))
-            <a href="{{ route('password.request') }}">
-                {{ __('Forgot your password?') }}
-            </a>
-        @endif
-
-        <div>
-            <button type="submit">
-               {{ __('Login') }}
-            </button>
-        </div>
-    </form>
+            <div class="buttons is-right">
+                @if (Route::has('password.request'))
+                    <a class="button is-text-grey" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif
+                <button class="button is-dark" type="submit">
+                    {{ __('Login') }}
+                </button>
+            </div>
+        </form>
+    </x-authentication-card>
 @endsection

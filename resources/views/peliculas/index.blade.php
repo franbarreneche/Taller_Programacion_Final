@@ -1,9 +1,9 @@
-@extends('layout.layout')
+@extends('layouts.app')
 
-@section('titulo','PELICULAS')
-@section('subtitulo','Listado con todas las películas')
+@section('title','PELICULAS')
+@section('subtitle','Listado con todas las películas')
 
-@section('contenido')
+@section('content')
 <div class="card">
   <header class="card-header">
     <p class="card-header-title">

@@ -1,36 +1,37 @@
 @extends('layouts.app')
 
+@section('title', 'Confirmar Password')
+
 @section('content')
-    @if ($errors->any())
-        <div>
-            <div>{{ __('Whoops! Something went wrong.') }}</div>
+    <x-authentication-card>
+        <h1 class="title is-4 has-text-grey-light mb-4">
+            {{ __('Confirm Password') }}
+        </h1>
 
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+        <x-validation-errors />
 
-    <form method="POST" action="{{ route('password.confirm') }}">
-        @csrf
+        <form method="POST" action="{{ route('password.confirm') }}">
+            @csrf
 
-        <div>
-            <label>{{ __('Password') }}</label>
-            <input type="password" name="password" required autocomplete="current-password" />
-        </div>
+            <div class="field mb-5">
+                <label for="password" class="label">
+                    {{ __('Password') }}
+                </label>
+                <div class="control">
+                    <input class="input" type="password" id="password" name="password" required autocomplete="current-password" />
+                </div>
+            </div>
 
-        <div>
-            <button type="submit">
-                {{ __('Confirm Password') }}
-            </button>
-        </div>
-
-        @if (Route::has('password.request'))
-            <a href="{{ route('password.request') }}">
-                {{ __('Forgot Your Password?') }}
-            </a>
-        @endif
-    </form>
+            <div class="buttons is-right">
+                @if (Route::has('password.request'))
+                    <a class="button is-text-grey" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif
+                <button class="button is-dark" type="submit">
+                    {{ __('Confirm Password') }}
+                </button>
+            </div>
+        </form>
+    </x-authentication-card>
 @endsection

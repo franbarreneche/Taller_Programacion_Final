@@ -1,42 +1,52 @@
 @extends('layouts.app')
 
+@section('title', 'Resetear Password')
+
 @section('content')
-    @if ($errors->any())
-        <div>
-            <div>{{ __('Whoops! Something went wrong.') }}</div>
+    <x-authentication-card>
+        <h1 class="title is-4 has-text-grey-light mb-4">
+            {{ __('Reset Password') }}
+        </h1>
 
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+        <x-validation-errors />
 
-    <form method="POST" action="{{ route('password.update') }}">
-        @csrf
+        <form method="POST" action="{{ route('password.update') }}">
+            @csrf
 
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+            <input type="hidden" name="token" value="{{ $request->route('token') }}" />
 
-        <div>
-        	<label>{{ __('Email') }}</label>
-        	<input type="email" name="email" value="{{ old('email', $request->email) }}" required autofocus />
-        </div>
+            <div class="field">
+                <label for="email" class="label">
+                    {{ __('Email') }}
+                </label>
+                <div class="control">
+                    <input class="input" type="email" id="email" name="email" value="{{ old('email', $request->email) }}" required autofocus />
+                </div>
+            </div>
 
-        <div>
-            <label>{{ __('Password') }}</label>
-            <input type="password" name="password" required autocomplete="new-password" />
-        </div>
+            <div class="field">
+                <label for="password" class="label">
+                    {{ __('Password') }}
+                </label>
+                <div class="control">
+                    <input class="input" type="password" id="password" name="password" required autocomplete="new-password" />
+                </div>
+            </div>
 
-        <div>
-            <label>{{ __('Confirm Password') }}</label>
-            <input type="password" name="password_confirmation" required autocomplete="new-password" />
-        </div>
+            <div class="field mb-5">
+                <label for="password_confirmation" class="label">
+                    {{ __('Confirm Password') }}
+                </label>
+                <div class="control">
+                    <input class="input" type="password" id="password_confirmation" name="password_confirmation" required autocomplete="new-password" />
+                </div>
+            </div>
 
-        <div>
-            <button type="submit">
-                {{ __('Reset Password') }}
-            </button>
-        </div>
-    </form>
+            <div class="buttons is-right">
+                <button class="button is-dark" type="submit">
+                    {{ __('Reset Password') }}
+                </button>
+            </div>
+        </form>
+    </x-authentication-card>
 @endsection

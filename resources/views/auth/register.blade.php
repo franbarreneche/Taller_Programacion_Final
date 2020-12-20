@@ -1,49 +1,62 @@
 @extends('layouts.app')
 
+@section('title', 'Registrar')
+
 @section('content')
-    @if ($errors->any())
-        <div>
-            <div>{{ __('Whoops! Something went wrong.') }}</div>
+    <x-authentication-card>
+        <h1 class="title is-4 has-text-grey-light mb-4">
+            {{ __('Register') }}
+        </h1>
 
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+        <x-validation-errors />
 
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
 
-        <div>
-            <label>{{ __('Name') }}</label>
-            <input type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name" />
-        </div>
+            <div class="field">
+                <label for="name" class="label">
+                    {{ __('Name') }}
+                </label>
+                <div class="control">
+                    <input class="input" type="text" id="name" name="name" value="{{ old('name') }}" required autofocus autocomplete="name" />
+                </div>
+            </div>
 
-        <div>
-            <label>{{ __('Email') }}</label>
-            <input type="email" name="email" value="{{ old('email') }}" required />
-        </div>
+            <div class="field">
+                <label for="email" class="label">
+                    {{ __('Email') }}
+                </label>
+                <div class="control">
+                    <input class="input" type="email" id="email" name="email" value="{{ old('email') }}" required />
+                </div>
+            </div>
 
-        <div>
-            <label>{{ __('Password') }}</label>
-            <input type="password" name="password" required autocomplete="new-password" />
-        </div>
+            <div class="field">
+                <label for="password" class="label">
+                    {{ __('Password') }}
+                </label>
+                <div class="control">
+                    <input class="input" type="password" id="password" name="password" required autocomplete="new-password" />
+                </div>
+            </div>
 
-        <div>
-            <label>{{ __('Confirm Password') }}</label>
-            <input type="password" name="password_confirmation" required autocomplete="new-password" />
-        </div>
+            <div class="field mb-5">
+                <label for="password_confirmation" class="label">
+                    {{ __('Confirm Password') }}
+                </label>
+                <div class="control">
+                    <input class="input" type="password" id="password_confirmation" name="password_confirmation" required autocomplete="new-password" />
+                </div>
+            </div>
 
-        <a href="{{ route('login') }}">
-            {{ __('Already registered?') }}
-        </a>
-
-        <div>
-            <button type="submit">
-                {{ __('Register') }}
-            </button>
-        </div>
-    </form>
+            <div class="buttons is-right">
+                <a class="button is-text-grey" href="{{ route('login') }}">
+                    {{ __('Already registered?') }}
+                </a>
+                <button class="button is-dark" type="submit">
+                    {{ __('Register') }}
+                </button>
+            </div>
+        </form>
+    </x-authentication-card>
 @endsection

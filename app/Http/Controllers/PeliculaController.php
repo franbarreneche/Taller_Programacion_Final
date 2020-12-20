@@ -53,7 +53,8 @@ class PeliculaController extends Controller
      */
     public function show($id)
     {
-        return redirect()->route("peliculas.index")->with("error","hola manola hola manola hola manola hola manola");
+        $pelicula = Pelicula::findOrFail($id);
+        return view('peliculas.show',["pelicula" => $pelicula]);
     }
 
     /**

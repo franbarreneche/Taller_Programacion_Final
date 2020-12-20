@@ -11,7 +11,7 @@
     </p>
     <a href="#" class="card-header-icon" aria-label="more options">
       <span class="icon">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
+        <i class="fas fa-list"></i>
       </span>
     </a>
   </header>
@@ -28,7 +28,7 @@
             <tbody>
                 @forelse($peliculas as $pelicula)
                 <tr>
-                    <td>{{$pelicula->titulo}}</td>
+                    <td><a href="{{route('peliculas.show',$pelicula->id)}}" class="has-text-info">{{$pelicula->titulo}}</a></td>
                     <td>{{(Illuminate\Support\Carbon::parse($pelicula->fecha_estreno))->format('d-m-Y')}}</td>
                     <td>{{$pelicula->idioma}}</td>
                     <td>{{$pelicula->rating}}</td>

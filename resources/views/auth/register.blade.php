@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Registrar')
+@section('title', 'Registro')
 
 @section('content')
     <x-authentication-card>

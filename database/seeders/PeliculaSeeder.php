@@ -26,7 +26,8 @@ class PeliculaSeeder extends Seeder
                     "resumen" => $pelicula['overview'],
                     "imagen" => $pelicula['backdrop_path'],
                     "rating" => $pelicula['vote_average'],
-                    "todo_publico" => ($pelicula['adult'])?false:true
+                    "todo_publico" => ($pelicula['adult'])?false:true,
+                    "user_id" => ($i%2 == 0)? 1 : 2
                     ]);
             }
         }

@@ -13,9 +13,14 @@ class PeliculaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //$peliculas = Pelicula::all();
-        $peliculas = Pelicula::paginate(15);
+    {        
+        if(auth()->user()) {
+            $peliculas = Pelicula::where('user_id',auth()->user()->id)->simplePaginate();
+            //dd($peliculas);
+        } 
+        else 
+            $peliculas = Pelicula::simplePaginate();            
+        //$peliculas = Pelicula::paginate(15);
         return view('peliculas.index',["peliculas" => $peliculas]);
     }
 
@@ -26,7 +31,7 @@ class PeliculaController extends Controller
      */
     public function create()
     {
-        return redirect()->route("peliculas.index")->with("exito","hola manola");
+        return redirect()->route("peliculas.index")->with("exito","hola manola hola manola hola manola");
     }
 
     /**
@@ -48,7 +53,7 @@ class PeliculaController extends Controller
      */
     public function show($id)
     {
-        return redirect()->route("peliculas.index")->with("error","hola manola");
+        return redirect()->route("peliculas.index")->with("error","hola manola hola manola hola manola hola manola");
     }
 
     /**

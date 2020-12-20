@@ -26,12 +26,13 @@
                 <th></th>
             </thead>
             <tbody>
-                @foreach($peliculas as $pelicula)
+                @forelse($peliculas as $pelicula)
                 <tr>
                     <td>{{$pelicula->titulo}}</td>
                     <td>{{(Illuminate\Support\Carbon::parse($pelicula->fecha_estreno))->format('d-m-Y')}}</td>
                     <td>{{$pelicula->idioma}}</td>
                     <td>{{$pelicula->rating}}</td>
+                    @if(auth()->user())
                     <td class="is-grouped">
                         <form action="{{route('peliculas.destroy',$pelicula->id)}}" method="POST">
                         @method("DELETE")
@@ -41,16 +42,20 @@
                         <button type="submit" class="button is-small is-danger">Elim</button>
                         </form>
                     </td>
+                    @endif
+                    @if(!auth()->user())
+                    <td>{{$pelicula->user_id}}</td>
+                    @endif
                 </tr>
-                @endforeach
+                @empty
+                <tr>No se encontraron películas</tr>
+                @endforelse
             </tbody>
       </table>
     </div>
   </div>
   <footer class="card-footer">
-    <a href="#" class="card-footer-item">Save</a>
-    <a href="#" class="card-footer-item"></a>
-    <a href="#" class="card-footer-item">Delete</a>
+    <div class="card-footer-item">{{$peliculas->links()}}</div>
   </footer>
 </div>
 @endsection

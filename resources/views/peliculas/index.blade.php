@@ -56,6 +56,9 @@
   </div>
   <footer class="card-footer">
     <div class="card-footer-item">{{$peliculas->links()}}</div>
+    @if(auth()->user())
+    <div class="card-footer-item"><a class="button is-primary" href="{{route('peliculas.create')}}">Agregar Nueva</a></div>
+    @endif
   </footer>
 </div>
 @endsection

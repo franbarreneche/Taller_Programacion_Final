@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pelicula;
+use App\Models\Artista;
 
 class PeliculaController extends Controller
 {
@@ -31,7 +32,8 @@ class PeliculaController extends Controller
      */
     public function create()
     {
-        return redirect()->route("peliculas.index")->with("exito","hola manola hola manola hola manola");
+        $directores = Artista::all();
+        return view('peliculas.create',["directores" => $directores]);
     }
 
     /**

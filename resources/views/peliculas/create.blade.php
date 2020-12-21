@@ -16,7 +16,7 @@
         </a>
     </header>
     <div class="card-content">
-        <form action="{{route('peliculas.store')}}" method="POST">
+        <form action="{{route('peliculas.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="field">
                 <label class="label">Título</label>

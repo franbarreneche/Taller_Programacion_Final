@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pelicula;
 use App\Models\Artista;
+use Illuminate\Support\Facades\Storage;
 
 class PeliculaController extends Controller
 {
@@ -56,7 +57,7 @@ class PeliculaController extends Controller
     public function store(Request $request)
     {
         
-        if(!auth()->user())             abort(401);
+        //if(!auth()->user())             abort(401);
 
         $validated = $request->validate([
             'titulo' => 'required',
@@ -65,7 +66,7 @@ class PeliculaController extends Controller
             'idioma' => 'required',
             'director' => 'required',
             'resumen' => 'required',
-            'poster' => 'required|max:2000',
+            'poster' => 'required|mimes:jpeg,bmp,png',            
         ]);
         
         $pelicula = new Pelicula();
@@ -76,11 +77,13 @@ class PeliculaController extends Controller
         $pelicula->idioma = request('idioma');
         //$pelicula->director_id = request('director');
         $pelicula->resumen = request('resumen');        
-        $pelicula->imagen = "/".request('poster');
+        
+        $path = $request->file('poster')->store("public/posters");
+        $pelicula->imagen = $path;
+
         $pelicula->user_id = auth()->user()->id;
         
         $pelicula->save();
-
         return redirect()->route('peliculas.index')->with("status","movie-created");
     }
 

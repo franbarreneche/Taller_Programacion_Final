@@ -45,6 +45,32 @@ class PeliculaController extends Controller
     public function store(Request $request)
     {
         
+        if(!auth()->user())             abort(401);
+
+        $validated = $request->validate([
+            'titulo' => 'required',
+            'fecha_estreno' => 'required',
+            'rating' => 'required',
+            'idioma' => 'required',
+            'director' => 'required',
+            'resumen' => 'required',
+            'poster' => 'required|max:2000',
+        ]);
+        
+        $pelicula = new Pelicula();
+        $pelicula->titulo = request('titulo');
+        $pelicula->fecha_estreno = request('fecha_estreno');
+        $pelicula->rating = request('rating');
+        $pelicula->todo_publico = request('todo_publico');
+        $pelicula->idioma = request('idioma');
+        //$pelicula->director_id = request('director');
+        $pelicula->resumen = request('resumen');        
+        $pelicula->imagen = "/".request('poster');
+        $pelicula->user_id = auth()->user()->id;
+        
+        $pelicula->save();
+
+        return redirect()->route('peliculas.index')->with("status","movie-created");
     }
 
     /**

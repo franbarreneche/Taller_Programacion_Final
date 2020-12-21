@@ -17,12 +17,23 @@
     </header>
     <div class="card-content">
         <form action="{{route('peliculas.store')}}" method="POST">
+            @csrf
             <div class="field">
                 <label class="label">Título</label>
                 <div class="control">
-                    <input class="input" type="text" name="titulo" placeholder="Nombre de la peli" required>
+                    <input class="input" type="text" name="titulo" placeholder="Nombre de la peli" value="{{old('titulo')}}">
                 </div>
-                @error('titlulo')
+                @error('titulo')
+                <p class="help is-danger">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="field">
+                <label class="label">Fecha de Estreno</label>
+                <div class="control">
+                    <input class="input" type="date" name="fecha_estreno" value="{{old('fecha_estreno')}}">
+                </div>
+                @error('fecha_estreno')
                 <p class="help is-danger">{{ $message }}</p>
                 @enderror
             </div>
@@ -30,7 +41,7 @@
             <div class="field">
                 <label class="label">Rating</label>
                 <div class="control">
-                    <input class="input" type="number" name="rating" placeholder="Nombre de la peli" required>
+                    <input class="input" type="number" name="rating" value="{{old('rating')}}" min="0" max="10" step="0.1">
                 </div>
                 @error('rating')
                 <p class="help is-danger">{{ $message }}</p>
@@ -40,7 +51,11 @@
             <div class="field">
                 <div class="control">
                     <label class="checkbox">
-                        <input type="checkbox" name="todo_publico">
+                        <input type="checkbox" name="todo_publico" 
+                        @if(old("todo_publico"))
+                            checked
+                        @endif
+                         >
                         Es para todo público
                     </label>
                 </div>
@@ -81,7 +96,7 @@
             <div class="field">
                 <label class="label">Resumen</label>
                 <div class="control">
-                    <textarea class="textarea" name="resumen" placeholder="Pequeño resumen"></textarea>
+                    <textarea class="textarea" name="resumen" placeholder="Pequeño resumen">{{old('resumen')}}</textarea>
                 </div>
                 @error('resumen')
                 <p class="help is-danger">{{ $message }}</p>
@@ -90,7 +105,7 @@
 
             <div class="field file">
                 <label class="file-label">
-                    <input class="file-input" name="imagen" type="file" accept="image/*" required>
+                    <input class="file-input" name="poster" type="file" accept="image/*">
                     <span class="file-cta">
                         <span class="file-icon">
                             <i class="fas fa-upload"></i>
@@ -100,14 +115,14 @@
                         </span>
                     </span>
                 </label>
-                @error('imagen')
+                @error('poster')
                 <p class="help is-danger">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="field is-grouped">
                 <div class="control">
-                    <button class="button is-link">{{ __('Submit') }}</button>
+                    <input type="submit" class="button is-link" value="{{ __('Submit') }}">
                 </div>
                 <div class="control">
                     <a href="{{ url()->previous() }}" class="button is-link is-light">{{ __('Cancel') }}</a>

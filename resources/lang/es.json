@@ -32,5 +32,7 @@
     "Yes" : "Si",
     "Submit" : "Cargar",
     "Cancel" : "Cancelar",
-    "Back" : "Volver"
+    "Back" : "Volver",
+    "The movie was created succesfully"  : "La película fue creada exitosamente.",
+    "There was a problem creating the movie" : "Hubo un problema al crear la película."
 }

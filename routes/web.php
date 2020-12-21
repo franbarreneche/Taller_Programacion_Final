@@ -30,7 +30,7 @@ Route::view('home', 'home')
 	->name('home')
 	->middleware(['auth', 'verified']);
 
-//ruta para un ligero cambio en la ruta para la actualizacion del perfil en Fortify
+//ligero cambio en la ruta para la actualizacion del perfil en Fortify
 Route::prefix('user')->middleware(['auth', 'verified'])->group(function () {
 	Route::view('profile', 'profile.show');
 });

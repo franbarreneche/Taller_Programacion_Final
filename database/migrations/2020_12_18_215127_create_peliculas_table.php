@@ -16,13 +16,13 @@ class CreatePeliculasTable extends Migration
         Schema::create('peliculas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string("titulo")->nullable();
-            $table->date("fecha_estreno")->nullable();
-            $table->decimal("rating")->nullable();
-            $table->boolean("todo_publico")->nullable();//si es para todo publico o no
-            $table->string("idioma")->nullable();
-            $table->text("resumen")->nullable();
-            $table->string("imagen")->nullable();
+            $table->string("titulo");
+            $table->date("fecha_estreno");
+            $table->decimal("rating");
+            $table->boolean("todo_publico");
+            $table->string("idioma");
+            $table->text("resumen");
+            $table->string("poster")->nullable();
         });
     }
 

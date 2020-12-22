@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserIdToPeliculasTable extends Migration
+class CreateGeneroPeliculaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddUserIdToPeliculasTable extends Migration
      */
     public function up()
     {
-        Schema::table('peliculas', function (Blueprint $table) {
-            $table->foreignId("user_id")->constrained();
+        Schema::create('genero_pelicula', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->foreignId("genero_id")->constrained();
+            $table->foreignId("pelicula_id")->constrained();
+
         });
     }
 
@@ -25,8 +29,6 @@ class AddUserIdToPeliculasTable extends Migration
      */
     public function down()
     {
-        Schema::table('peliculas', function (Blueprint $table) {
-            $table->dropColumn('user_id');
-        });
+        Schema::dropIfExists('genero_pelicula');
     }
 }

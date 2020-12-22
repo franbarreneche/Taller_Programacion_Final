@@ -80,7 +80,7 @@ class PeliculaController extends Controller
         if($request->file('poster')) {
            $path = $request->file('poster')->store("public/posters");
            $aux = explode("/",$path);
-           $pelicula->imagen = array_pop($aux);
+           $pelicula->poster = array_pop($aux);
         }
 
         $pelicula->user_id = auth()->user()->id;

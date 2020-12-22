@@ -50,12 +50,18 @@
 
             <div class="field">
                 <div class="control">
+                    @foreach($generos as $genero)
                     <label class="checkbox">
-                        <input type="checkbox" name="todo_publico" 
-                        @if(old("todo_publico"))
-                            checked
-                        @endif
-                         >
+                        <input type="checkbox" name="generos[]" value="{{$genero->id}}">{{$genero->nombre}}        
+                    </label>
+                    @endforeach          
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <label class="checkbox">
+                        <input type="checkbox" name="todo_publico" @if(old("todo_publico")) checked @endif>
                         Es para todo público
                     </label>
                 </div>

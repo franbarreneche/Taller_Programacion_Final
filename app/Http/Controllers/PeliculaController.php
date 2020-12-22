@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pelicula;
 use App\Models\Artista;
+use App\Models\Genero;
 use Illuminate\Support\Facades\Storage;
 
 class PeliculaController extends Controller
@@ -44,8 +45,9 @@ class PeliculaController extends Controller
      */
     public function create()
     {
+        $generos = Genero::all();
         $directores = Artista::all();
-        return view('peliculas.create',["directores" => $directores]);
+        return view('peliculas.create',["directores" => $directores, "generos" => $generos]);
     }
 
     /**
@@ -56,7 +58,6 @@ class PeliculaController extends Controller
      */
     public function store(Request $request)
     {
-        
         //if(!auth()->user())             abort(401);
         $validated = $request->validate([
             'titulo' => 'required',
@@ -82,10 +83,15 @@ class PeliculaController extends Controller
            $aux = explode("/",$path);
            $pelicula->poster = array_pop($aux);
         }
-
+        //ponemos al usuario
         $pelicula->user_id = auth()->user()->id;
         
+        //guardamos en la BD
         $pelicula->save();
+
+        //ponemos los generos
+        $generos = request('generos');
+        $pelicula->generos()->attach($generos);
 
         return redirect()->route('peliculas.index')->with("status","movie-created");
     }

@@ -24,16 +24,23 @@
                  <tr><td>Rating:</td><td>{{$pelicula->rating}}</td></tr>
                  <tr><td>Todo Público:</td><td>{{$pelicula->todo_publico? __('Yes') : __('No')}}</td></tr>
                  <tr><td>Idioma Principal:</td><td>{{$pelicula->idioma}}</td></tr>
-                 <tr><td>Director:</td><td> <span class="tag is-primary is-light">{{$pelicula->director->nombre}}</span></td></tr>
-                 <tr><td>Actores:</td><td>Aca van los actores</td></tr>
+                 <tr><td>Director:</td><td> <span class="tag is-success is-light">{{$pelicula->director->nombre}}</span></td></tr>
+                 <tr><td>Actores:</td><td>
+                    @forelse($pelicula->actores as $actor)
+                    <span class="tag is-link is-light">{{$actor->nombre}}</span>
+                    @empty
+                    <span class="tag is-danger is-light">{{ __('None')}}</span>
+                    @endforelse
+                 </td></tr>
                  <tr><td>Generos:</td><td>
-                 @foreach($pelicula->generos as $genero)
-                 <span class="tag is-link is-light">{{$genero->nombre}}</span>
-                 @endforeach
+                    @forelse($pelicula->generos as $genero)
+                    <span class="tag is-link is-light">{{$genero->nombre}}</span>
+                    @empty
+                    <span class="tag is-danger is-light">{{ __('None')}}</span>
+                    @endforelse
                  </td></tr>
                  <tr><td>Resumen:</td><td>{{$pelicula->resumen}}</td></tr>
-                 <tr><td>Agregada por:</td><td>{{$pelicula->user->name}}</td></tr>
-                   
+                 <tr><td>Agregada por:</td><td>{{$pelicula->user->name}}</td></tr>                   
                 </table>    
             </div>
             <div class="column">

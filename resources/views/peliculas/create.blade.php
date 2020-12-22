@@ -49,6 +49,7 @@
             </div>
 
             <div class="field">
+                <label class="label">Generos</label>
                 <div class="control">
                     @foreach($generos as $genero)
                     <label class="checkbox">
@@ -56,6 +57,9 @@
                     </label>
                     @endforeach          
                 </div>
+                @error('generos')
+                <p class="help is-danger">{{ $message }}</p>
+                @enderror
             </div>
 
             <div class="field">
@@ -64,7 +68,7 @@
                         <input type="checkbox" name="todo_publico" @if(old("todo_publico")) checked @endif>
                         Es para todo público
                     </label>
-                </div>
+                </div>                
             </div>
 
             <div class="field">
@@ -88,13 +92,27 @@
                 <div class="control">
                     <div class="select">
                         <select name="director" required>
-                            @foreach($directores as $director)
+                            @foreach($artistas as $director)
                             <option value="{{$director->id}}">{{$director->nombre}}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
                 @error('director')
+                <p class="help is-danger">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="field">
+                <label class="label">Actores</label>
+                <div class="control">
+                    @foreach($artistas as $actor)
+                    <label class="checkbox">
+                        <input type="checkbox" name="actores[]" value="{{$actor->id}}">{{$actor->nombre}}        
+                    </label>
+                    @endforeach          
+                </div>
+                @error('actores')
                 <p class="help is-danger">{{ $message }}</p>
                 @enderror
             </div>

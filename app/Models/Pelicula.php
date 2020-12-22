@@ -21,4 +21,8 @@ class Pelicula extends Model
     public function director() {
         return $this->belongsTo("App\Models\Artista");
     }
+
+    public function actores() {
+        return $this->belongsToMany("App\Models\Artista");
+    }
 }

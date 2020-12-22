@@ -47,7 +47,7 @@ class PeliculaController extends Controller
     {
         $generos = Genero::all();
         $directores = Artista::all();
-        return view('peliculas.create',["directores" => $directores, "generos" => $generos]);
+        return view('peliculas.create',["artistas" => $directores, "generos" => $generos]);
     }
 
     /**
@@ -66,7 +66,9 @@ class PeliculaController extends Controller
             'idioma' => 'required',
             'director' => 'required',
             'resumen' => 'required',
-            'poster' => 'mimes:jpeg,bmp,png',            
+            'poster' => 'mimes:jpeg,bmp,png',
+            'actores' => 'required|array|min:2',
+            'generos' => 'required|array|min:2'   
         ]);
         
         $pelicula = new Pelicula();
@@ -92,6 +94,10 @@ class PeliculaController extends Controller
         //ponemos los generos
         $generos = request('generos');
         $pelicula->generos()->attach($generos);
+
+        //ponemos los actores
+        $actores = request('actores');
+        $pelicula->actores()->attach($actores);
 
         return redirect()->route('peliculas.index')->with("status","movie-created");
     }

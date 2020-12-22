@@ -65,14 +65,14 @@ class PeliculaController extends Controller
             'idioma' => 'required',
             'director' => 'required',
             'resumen' => 'required',
-            'poster' => 'required|mimes:jpeg,bmp,png',            
+            'poster' => 'mimes:jpeg,bmp,png',            
         ]);
         
         $pelicula = new Pelicula();
         $pelicula->titulo = request('titulo');
         $pelicula->fecha_estreno = request('fecha_estreno');
         $pelicula->rating = request('rating');
-        $pelicula->todo_publico = request('todo_publico');
+        $pelicula->todo_publico = request('todo_publico')? true : false;
         $pelicula->idioma = request('idioma');
         //$pelicula->director_id = request('director');
         $pelicula->resumen = request('resumen');        

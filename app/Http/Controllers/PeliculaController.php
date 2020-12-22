@@ -75,7 +75,7 @@ class PeliculaController extends Controller
         $pelicula->rating = request('rating');
         $pelicula->todo_publico = request('todo_publico')? true : false;
         $pelicula->idioma = request('idioma');
-        //$pelicula->director_id = request('director');
+        $pelicula->director_id = request('director');
         $pelicula->resumen = request('resumen');        
         
         if($request->file('poster')) {

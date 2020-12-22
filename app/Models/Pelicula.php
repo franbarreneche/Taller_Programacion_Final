@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pelicula extends Model
 {
     use HasFactory;
-
+    const IDIOMAS = ["en" => "Ingles","es" => "Español","ru" => "Ruso","de" => "Aleman","ko" => "Coreano","ja" => "Japones", "it" => "Italiano", "fr" => "Frances", "ar" => "Arábico", "pt" => "Portugués", "zh" => "Chino", "da" => "Danés"];
 
     public function user() {
         return $this->belongsTo("App\Models\User");

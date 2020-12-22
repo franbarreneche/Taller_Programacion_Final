@@ -23,7 +23,7 @@
                  <tr><td>Fecha de Estreno:</td><td>{{(Illuminate\Support\Carbon::parse($pelicula->fecha_estreno))->format('d-m-Y')}}</td></tr>
                  <tr><td>Rating:</td><td>{{$pelicula->rating}}</td></tr>
                  <tr><td>Todo Público:</td><td>{{$pelicula->todo_publico? __('Yes') : __('No')}}</td></tr>
-                 <tr><td>Idioma Principal:</td><td>{{$pelicula->idioma}}</td></tr>
+                 <tr><td>Idioma Principal:</td><td>{{App\Models\Pelicula::IDIOMAS[$pelicula->idioma]}}</td></tr>
                  <tr><td>Director:</td><td> <span class="tag is-success is-light">{{$pelicula->director->nombre}}</span></td></tr>
                  <tr><td>Actores:</td><td>
                     @forelse($pelicula->actores as $actor)

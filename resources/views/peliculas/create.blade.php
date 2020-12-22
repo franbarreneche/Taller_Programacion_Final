@@ -53,7 +53,7 @@
                 <div class="control">
                     @foreach($generos as $genero)
                     <label class="checkbox">
-                        <input type="checkbox" name="generos[]" value="{{$genero->id}}">{{$genero->nombre}}        
+                        <input type="checkbox" name="generos[]" value="{{$genero->id}}" @if(old('generos') && in_array($genero->id,old('generos'))) checked @endif > {{$genero->nombre}}       
                     </label>
                     @endforeach          
                 </div>
@@ -76,9 +76,9 @@
                 <div class="control">
                     <div class="select">
                         <select name="idioma" required>
-                            <option value="es">Ingles</option>
-                            <option value="en">Español</option>
-                            <option value="ru">Ruso</option>
+                            @foreach(App\Models\Pelicula::IDIOMAS as $key => $idioma)
+                            <option value="{{$key}}">{{$idioma}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                     <div class="select">
                         <select name="director" required>
                             @foreach($artistas as $director)
-                            <option value="{{$director->id}}">{{$director->nombre}}</option>
+                            <option value="{{$director->id}}" @if(old('director') && $director->id == old('director')) selected @endif > {{$director->nombre}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -108,7 +108,7 @@
                 <div class="control">
                     @foreach($artistas as $actor)
                     <label class="checkbox">
-                        <input type="checkbox" name="actores[]" value="{{$actor->id}}">{{$actor->nombre}}        
+                        <input type="checkbox" name="actores[]" value="{{$actor->id}}"  @if(old('actores') && in_array($actor->id,old('actores'))) checked @endif > {{$actor->nombre}}        
                     </label>
                     @endforeach          
                 </div>

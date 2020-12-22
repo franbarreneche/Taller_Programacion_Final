@@ -57,8 +57,7 @@ class PeliculaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //if(!auth()->user())             abort(401);
+    {        
         $validated = $request->validate([
             'titulo' => 'required',
             'fecha_estreno' => 'required',
@@ -122,8 +121,11 @@ class PeliculaController extends Controller
      */
     public function edit($id)
     {
-        dd("edit");
-        redirect('welcome');
+        $peli = Pelicula::findOrFail($id);
+        if(auth()->user()->id !== $peli->user_id) abort(401);
+        $generos = Genero::all();
+        $directores = Artista::all();
+        return view('peliculas.edit',["artistas" => $directores, "generos" => $generos,"pelicula" => $peli]);
     }
 
     /**
@@ -135,7 +137,9 @@ class PeliculaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $peli = Pelicula::findOrFail($id);
+        if(auth()->user()->id !== $peli->user_id) abort(401);
+        dd("Ejecuto el update");
     }
 
     /**
@@ -146,7 +150,9 @@ class PeliculaController extends Controller
      */
     public function destroy($id)
     {
-        dd("destoryed");
-        redirect('welcome');
+        $peli = Pelicula::findOrFail($id);
+        if(auth()->user()->id !== $peli->user_id) abort(401);
+        $peli->delete();
+        return redirect()->route('peliculas.index')->with("status","movie-deleted");
     }
 }

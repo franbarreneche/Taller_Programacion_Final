@@ -9,6 +9,7 @@
           'two-factor-authentication-disabled' => __('Two factor authentication has been disabled'),
           'verification-link-sent'             => __('A new verification link has been sent to the email address you provided during registration.'),
           'movie-created'                      => __('The movie was created succesfully'),
+          'movie-deleted'                      => __('The movie was deleted succesfully'),
         ];
         $message = array_key_exists($status, $statuses) ? $statuses[$status]: $status;
     @endphp

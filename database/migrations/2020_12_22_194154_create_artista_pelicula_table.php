@@ -16,8 +16,8 @@ class CreateArtistaPeliculaTable extends Migration
         Schema::create('artista_pelicula', function (Blueprint $table) {
             $table->id();
             $table->timestamps();            
-            $table->foreignId("pelicula_id")->constrained();
-            $table->foreignId("artista_id")->constrained();
+            $table->foreignId("pelicula_id")->constrained()->onDelete('cascade');;
+            $table->foreignId("artista_id")->constrained()->onDelete('cascade');;
         });
     }
 

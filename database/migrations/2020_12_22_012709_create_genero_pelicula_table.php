@@ -16,8 +16,8 @@ class CreateGeneroPeliculaTable extends Migration
         Schema::create('genero_pelicula', function (Blueprint $table) {
             $table->id();
             $table->timestamps();            
-            $table->foreignId("pelicula_id")->constrained();
-            $table->foreignId("genero_id")->constrained();
+            $table->foreignId("pelicula_id")->constrained()->onDelete('cascade');;
+            $table->foreignId("genero_id")->constrained()->onDelete('cascade');;
         });
     }
 

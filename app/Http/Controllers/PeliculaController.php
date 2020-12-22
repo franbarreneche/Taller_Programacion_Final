@@ -58,7 +58,6 @@ class PeliculaController extends Controller
     {
         
         //if(!auth()->user())             abort(401);
-
         $validated = $request->validate([
             'titulo' => 'required',
             'fecha_estreno' => 'required',
@@ -78,12 +77,16 @@ class PeliculaController extends Controller
         //$pelicula->director_id = request('director');
         $pelicula->resumen = request('resumen');        
         
-        $path = $request->file('poster')->store("public/posters");
-        $pelicula->imagen = $path;
+        if($request->file('poster')) {
+           $path = $request->file('poster')->store("public/posters");
+           $aux = explode("/",$path);
+           $pelicula->imagen = array_pop($aux);
+        }
 
         $pelicula->user_id = auth()->user()->id;
         
         $pelicula->save();
+
         return redirect()->route('peliculas.index')->with("status","movie-created");
     }
 

@@ -34,13 +34,20 @@
             </div>
             <div class="column">
                 <figure class="image is-2by3">
-                    <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2{{$pelicula->imagen}}">
+                    <!--<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2{{$pelicula->imagen}}">-->
+                    @if(!$pelicula->imagen)
+                    <img src="https://via.placeholder.com/540x810">
+                    @elseif(filter_var($pelicula->imagen, FILTER_VALIDATE_URL))
+                    <img src="{{$pelicula->imagen}}">
+                    @else
+                    <img src="{{asset('storage/posters/'.    $pelicula->imagen)}}">
+                    @endif
                 </figure>
             </div>
         </div>
     </div>
     <footer class="card-footer">
-        <div class="card-footer-item"></div>
+        <div class="card-footer-item"><a href="{{ url()->previous() }}">{{ __('Back') }}</a></div>
     </footer>
 </div>
 @endsection

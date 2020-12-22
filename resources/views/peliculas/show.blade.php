@@ -24,7 +24,7 @@
                  <tr><td>Rating:</td><td>{{$pelicula->rating}}</td></tr>
                  <tr><td>Todo Público:</td><td>{{$pelicula->todo_publico? __('Yes') : __('No')}}</td></tr>
                  <tr><td>Idioma Principal:</td><td>{{$pelicula->idioma}}</td></tr>
-                 <tr><td>Director:</td><td>Aca va el director</td></tr>
+                 <tr><td>Director:</td><td> <span class="tag is-primary is-light">{{$pelicula->director->nombre}}</span></td></tr>
                  <tr><td>Actores:</td><td>Aca van los actores</td></tr>
                  <tr><td>Generos:</td><td>
                  @foreach($pelicula->generos as $genero)
@@ -38,7 +38,6 @@
             </div>
             <div class="column">
                 <figure class="image is-2by3">
-                    <!--<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2{{$pelicula->imagen}}">-->
                     @if(!$pelicula->poster)
                     <img src="https://via.placeholder.com/540x810">
                     @elseif(filter_var($pelicula->poster, FILTER_VALIDATE_URL))

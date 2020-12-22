@@ -17,4 +17,8 @@ class Pelicula extends Model
     public function generos() {
         return $this->belongsToMany("App\Models\Genero");
     }
+
+    public function director() {
+        return $this->belongsTo("App\Models\Artista");
+    }
 }

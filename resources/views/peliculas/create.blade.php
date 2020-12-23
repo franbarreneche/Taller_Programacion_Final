@@ -50,12 +50,12 @@
 
             <div class="field">
                 <label class="label">Generos</label>
-                <div class="control">
+                <div class="select is-multiple is-fullwidth">
+                <select name="generos[]" multiple size="8">
                     @foreach($generos as $genero)
-                    <label class="checkbox">
-                        <input type="checkbox" name="generos[]" value="{{$genero->id}}" @if(old('generos') && in_array($genero->id,old('generos'))) checked @endif > {{$genero->nombre}}       
-                    </label>
-                    @endforeach          
+                        <option value="{{$genero->id}}" @if(old('generos') && in_array($genero->id,old('generos'))) selected @endif > {{$genero->nombre}}       
+                    @endforeach    
+                </select>      
                 </div>
                 @error('generos')
                 <p class="help is-danger">{{ $message }}</p>
@@ -105,12 +105,12 @@
 
             <div class="field">
                 <label class="label">Actores</label>
-                <div class="control">
+                <div class="select is-multiple is-fullwidth">
+                <select name="actores[]" multiple size="8">
                     @foreach($artistas as $actor)
-                    <label class="checkbox">
-                        <input type="checkbox" name="actores[]" value="{{$actor->id}}"  @if(old('actores') && in_array($actor->id,old('actores'))) checked @endif > {{$actor->nombre}}        
-                    </label>
-                    @endforeach          
+                        <option value="{{$actor->id}}"  @if(old('actores') && in_array($actor->id,old('actores'))) selected @endif > {{$actor->nombre}}        
+                    @endforeach    
+                </select>      
                 </div>
                 @error('actores')
                 <p class="help is-danger">{{ $message }}</p>

@@ -17,11 +17,11 @@ class ApiArtistaController extends Controller
     {        
         $aRet = DB::table('artistas')
         ->join('artista_pelicula',"artistas.id","=","artista_pelicula.artista_id")
-        ->select(DB::raw('artistas.nombre, count(*)'))
+        ->select(DB::raw('artistas.nombre as "Nombre", count(*) as "Cantidad de Peliculas"'))
         ->groupBy('artistas.nombre')
         ->orderByDesc(DB::raw('count(*)'))
         ->get();
-        return print_r($aRet);
+        return $aRet;
     }
     
 }

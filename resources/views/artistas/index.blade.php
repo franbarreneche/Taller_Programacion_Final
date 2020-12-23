@@ -17,11 +17,10 @@
   </header>
   <div class="card-content">
     <div class="table-content">
-      <table class="table is-fullwidth">
+      <table class="table is-striped is-fullwidth">
             <thead>
-                <td>Agregado</td>
+                <th>Agregado</th>
                 <th>Nombre</th>
-                <th></th>
             </thead>
             <tbody>
                 @forelse($artistas as $artista)

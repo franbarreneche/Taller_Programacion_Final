@@ -43,7 +43,7 @@
                         <td>{{$pelicula->rating}}</td>
                     </tr>
                     @empty
-                    <tr>{{ __('Couldnt find any entries.') }}</tr>
+                    <tr><td>{{ __('Couldn\'t find any entries.') }}</td></tr>
                     @endforelse
                 </tbody>
             </table>
@@ -64,7 +64,7 @@
                         <td>{{$pelicula->rating}}</td>
                     </tr>
                     @empty
-                    <tr>{{ __('Couldnt find any entries.') }}</tr>
+                    <tr><td>{{ __('Couldn\'t find any entries.') }}</td></tr>
                     @endforelse
                 </tbody>
             </table>

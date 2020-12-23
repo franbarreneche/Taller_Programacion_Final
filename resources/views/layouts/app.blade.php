@@ -24,7 +24,7 @@
     
 </head>
 
-<body>
+<body class="has-background-light">
     <x-navbar />
     <section class="section">
         <div class="container">

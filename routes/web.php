@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PeliculaController;
+use App\Http\Controllers\ArtistaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,7 @@ Route::view('home', 'home')
 Route::prefix('user')->middleware(['auth', 'verified'])->group(function () {
 	Route::view('profile', 'profile.show');
 });
+
+//rutas para ver todos los artistas y la info de un artista (entre ellas peliculas en las que participó)
+Route::get('artistas',[ArtistaController::class,'index'])->name('artistas.index');
+Route::get('artistas/{id}',[ArtistaController::class,'show'])->name('artistas.show');

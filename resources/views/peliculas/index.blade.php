@@ -50,7 +50,7 @@
                     @endif
                 </tr>
                 @empty
-                <tr>No se encontraron películas</tr>
+                <tr>{{ __('Couldnt find any entries.') }}</tr>
                 @endforelse
             </tbody>
       </table>

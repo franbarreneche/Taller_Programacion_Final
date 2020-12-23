@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             GeneroSeeder::class,            
             ArtistaSeeder::class,
             PeliculaSeeder::class,
+            ArtistaPeliculaSeeder::class,
+            GeneroPeliculaSeeder::class,
         ]);
     }
 }

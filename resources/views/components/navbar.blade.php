@@ -1,7 +1,7 @@
 <nav x-data="{ hamburgerMenuIsOpen: false }" class="navbar is-white is-spaced is-transparent has-shadow" role="navigation" aria-label="main navigation">
     <div class="container">
         <div class="navbar-brand">
-            <a class="navbar-item is-flex is-align-content-center" href="{{ route('home') }}">
+            <a class="navbar-item is-flex is-align-content-center" href="/">
                 <x-application-mark class="fill-current has-text-primary" width="19" height="28" />
                 <h1 class="title is-3 is-dark ml-2">
                     {{ config('app.name', 'Laravel') }}
@@ -25,6 +25,8 @@
     {{--            <a href="/" class="navbar-item">--}}
     {{--                {{ __('Home') }}--}}
     {{--            </a>--}}
+                <a href="{{route('peliculas.index')}}" class="navbar-item">{{ __('Movies')}}</a>
+                <a href="{{route('artistas.index')}}" class="navbar-item">{{ __('Artists')}}</a>
             </div>
 
             <div class="navbar-end">

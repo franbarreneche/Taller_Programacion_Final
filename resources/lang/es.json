@@ -46,5 +46,7 @@
     "Two factor authentication has been disabled" : "La autenticación de dos pasos ha sido desactivada",
     "A new verification link has been sent to the email address you provided during registration." : "Un link de verificación fue enviado a la dirección de email que nos diste al momento de la registración.",
     "Female" : "Femenino",
-    "Male" : "Masculino"
+    "Male" : "Masculino",
+    "Movies" : "Películas",
+    "Artists" : "Artistas"
 }

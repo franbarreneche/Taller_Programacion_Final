@@ -44,5 +44,7 @@
     "Two Factor recovery codes have been regenerated" : "Códigos de recuperación de 2FA han sido regenerados.",
     "Two factor authentication has been enabled" : "La atuenticación de dos pasos ha sido activada.",
     "Two factor authentication has been disabled" : "La autenticación de dos pasos ha sido desactivada",
-    "A new verification link has been sent to the email address you provided during registration." : "Un link de verificación fue enviado a la dirección de email que nos diste al momento de la registración."
+    "A new verification link has been sent to the email address you provided during registration." : "Un link de verificación fue enviado a la dirección de email que nos diste al momento de la registración.",
+    "Female" : "Femenino",
+    "Male" : "Masculino"
 }

@@ -16,10 +16,17 @@
         </a>
     </header>
     <div class="card-content">
-        <div class="field">
-            <label class="label">Nombre</label>
-            <p>{{$artista->nombre}}</p>
-        </div>
+    <div class="media">
+      <div class="media-left mb-4">
+        <figure class="image is-64x64">
+          <img src="{{$artista->foto}}" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">{{$artista->nombre}}</p>
+        <p class="subtitle is-6 has-text-info">{{$artista->genero == 1 ? __('Female') : __('Male')}}</p>
+      </div>
+    </div>
         <div class="table-container">
             <label class="label">Películas que dirigió</label>
             <table class="table is-striped is-fullwidth">

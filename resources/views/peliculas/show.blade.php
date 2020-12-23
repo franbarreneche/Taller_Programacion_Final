@@ -24,10 +24,10 @@
                  <tr><td>Rating:</td><td>{{$pelicula->rating}}</td></tr>
                  <tr><td>Todo Público:</td><td>{{$pelicula->todo_publico? __('Yes') : __('No')}}</td></tr>
                  <tr><td>Idioma Principal:</td><td>{{App\Models\Pelicula::IDIOMAS[$pelicula->idioma]}}</td></tr>
-                 <tr><td>Director:</td><td> <span class="tag is-success is-light">{{$pelicula->director->nombre}}</span></td></tr>
+                 <tr><td>Director:</td><td> <a class="tag is-success is-light" href="{{route('artistas.show',$pelicula->director->id)}}">{{$pelicula->director->nombre}}</a></td></tr>
                  <tr><td>Actores:</td><td>
                     @forelse($pelicula->actores as $actor)
-                    <span class="tag is-link is-light">{{$actor->nombre}}</span>
+                    <a href="{{route('artistas.show',$actor->id)}}" class="tag is-link is-light">{{$actor->nombre}}</addcslashes>                    
                     @empty
                     <span class="tag is-danger is-light">{{ __('None')}}</span>
                     @endforelse

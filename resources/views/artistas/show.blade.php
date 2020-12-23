@@ -63,5 +63,8 @@
             </table>
         </div>
     </div>
+    <footer class="card-footer">
+        <div class="card-footer-item"><a href="{{ url()->previous() }}">{{ __('Back') }}</a></div>
+    </footer>
 </div>
 @endsection

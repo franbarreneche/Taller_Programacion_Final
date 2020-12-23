@@ -19,6 +19,7 @@
     <div class="table-content">
       <table class="table is-fullwidth">
             <thead>
+                <td>Agregada</td>
                 <th>Titulo</th>
                 <th>Estreno</th>
                 <th>Idioma</th>
@@ -28,6 +29,7 @@
             <tbody>
                 @forelse($peliculas as $pelicula)
                 <tr>
+                    <td>{{(Illuminate\Support\Carbon::parse($pelicula->created_at))->format('d-m-Y H:i')}}</td>
                     <td><a href="{{route('peliculas.show',$pelicula->id)}}" class="has-text-info">{{$pelicula->titulo}}</a></td>
                     <td>{{(Illuminate\Support\Carbon::parse($pelicula->fecha_estreno))->format('d-m-Y')}}</td>
                     <td>{{$pelicula->idioma}}</td>
@@ -44,7 +46,7 @@
                     </td>
                     @endif
                     @if(!auth()->user())
-                    <td>{{$pelicula->user_id}}</td>
+                    <td>{{$pelicula->user->name}}</td>
                     @endif
                 </tr>
                 @empty

@@ -11,7 +11,7 @@
             Elija alguna de las siguientes tareas para hacer.
         </h2>
         <div class="buttons is-grouped">
-            <a href="{{route('peliculas.index')}}">Ver Listado de Mis peliculas</a>
+            <a href="{{route('peliculas.index')}}" class="button">Ver Listado de Mis peliculas</a>
         </div>
     </div>
 @endsection

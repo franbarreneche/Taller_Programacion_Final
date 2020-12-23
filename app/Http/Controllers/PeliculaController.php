@@ -29,12 +29,10 @@ class PeliculaController extends Controller
     public function index()
     {        
         if(auth()->user()) {
-            $peliculas = Pelicula::where('user_id',auth()->user()->id)->simplePaginate();
-            //dd($peliculas);
+            $peliculas = Pelicula::where('user_id',auth()->user()->id)->orderByDesc('created_at')->simplePaginate();
         } 
         else 
-            $peliculas = Pelicula::simplePaginate();            
-        //$peliculas = Pelicula::paginate(15);
+            $peliculas = Pelicula::orderByDesc('created_at')->simplePaginate();            
         return view('peliculas.index',["peliculas" => $peliculas]);
     }
 

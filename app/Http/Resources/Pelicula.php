@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Artista as ArtistaResource;
 
 class Pelicula extends JsonResource
 {
@@ -22,9 +23,9 @@ class Pelicula extends JsonResource
             'todo_publico' => $this->todo_publico,
             'resumen' => $this->resumen,
             'poster' => $this->poster,
-            'user' => $this->user->name,
-            'director' => $this->director->nombre,
-            'actores' => $this->actores
+            'creador' => $this->user->name,
+            'director' => new ArtistaResource($this->director),
+            'actores' => ArtistaResource::collection($this->actores)
         ];
     }
 }

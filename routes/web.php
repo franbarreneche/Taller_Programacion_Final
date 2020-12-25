@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PeliculaController;
 use App\Http\Controllers\ArtistaController;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,7 @@ use App\Http\Controllers\ArtistaController;
 
 
 //ruta de ingreso a la web
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class,'welcome'])->name('welcome');
 
 
 //rutas para el manejo de peliculas

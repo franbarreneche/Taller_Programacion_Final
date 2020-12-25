@@ -48,5 +48,7 @@
     "Female" : "Femenino",
     "Male" : "Masculino",
     "Movies" : "Películas",
-    "Artists" : "Artistas"
+    "Artists" : "Artistas",
+    "Search" : "Buscar",
+    "Search by movie name" : "Buscar por nombre de película"
 }

@@ -35,6 +35,7 @@
     "Back" : "Volver",
     "The movie was created succesfully"  : "La película fue creada exitosamente.",
     "The movie was deleted succesfully" : "La película fue eliminada exitosamente.",
+    "The movie was modified succesfully" : "La película fue modificada exitosamente",
     "There was a problem creating the movie" : "Hubo un problema al crear la película.",
     "None" : "Ninguno",
     "Update" : "Actualizar",

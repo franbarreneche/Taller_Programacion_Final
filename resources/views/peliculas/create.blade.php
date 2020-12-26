@@ -138,6 +138,8 @@
                             Seleccionar poster...
                         </span>
                     </span>
+                    <span class="file-name" id="nombreArchivo">                    
+                    </span>
                 </label>
                 @error('poster')
                 <p class="help is-danger">{{ $message }}</p>
@@ -158,4 +160,11 @@
         <div class="card-footer-item"></div>
     </footer>
 </div>
+<script>
+    var nombreArchivo = document.getElementById('nombreArchivo')
+    var inputFile = document.querySelector('input[type="file"]');
+    inputFile.onchange = function(e) {
+        nombreArchivo.innerHTML = inputFile.files[0].name;
+    };
+</script>
 @endsection

@@ -133,9 +133,53 @@ class PeliculaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $peli = Pelicula::findOrFail($id);
-        if(auth()->user()->id !== $peli->user_id) abort(401);
-        dd("Ejecuto el update");
+        $pelicula = Pelicula::findOrFail($id);
+        if(auth()->user()->id !== $pelicula->user_id) abort(401);
+        
+        $validated = $request->validate([
+            'titulo' => 'required',
+            'fecha_estreno' => 'required',
+            'rating' => 'required',
+            'idioma' => 'required',
+            'director' => 'required',
+            'resumen' => 'required',
+            'poster' => 'mimes:jpeg,bmp,png',
+            'actores' => 'required|array|min:2',
+            'generos' => 'required|array|min:2'   
+        ]);
+                
+        $pelicula->titulo = request('titulo');
+        $pelicula->fecha_estreno = request('fecha_estreno');
+        $pelicula->rating = request('rating');
+        $pelicula->todo_publico = request('todo_publico')? true : false;
+        $pelicula->idioma = request('idioma');
+        $pelicula->director_id = request('director');
+        $pelicula->resumen = request('resumen');        
+        
+        if($request->file('poster')) {
+            $poster = $pelicula->poster;
+            //si tenia un poster en el almacenamiento interno lo eliminamos
+            if($poster || !(filter_var($poster, FILTER_VALIDATE_URL))) {            
+                Storage::delete("public/posters/".$poster);
+            }
+            //agregamos el nuevo poster
+           $path = $request->file('poster')->store("public/posters");
+           $aux = explode("/",$path);
+           $pelicula->poster = array_pop($aux);
+        }
+                
+        //guardamos en la BD
+        $pelicula->save();
+
+        //actualizamos los generos
+        $generos = request('generos');
+        $pelicula->generos()->sync($generos);
+
+        //actualizamos los actores
+        $actores = request('actores');
+        $pelicula->actores()->sync($actores);
+
+        return redirect()->route('peliculas.index')->with("status","movie-edited");
     }
 
     /**

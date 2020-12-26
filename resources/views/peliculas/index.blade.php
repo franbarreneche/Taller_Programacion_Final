@@ -29,9 +29,9 @@
             <tbody>
                 @forelse($peliculas as $pelicula)
                 <tr>
-                    <td>{{(Illuminate\Support\Carbon::parse($pelicula->created_at))->format('d-m-Y H:i')}}</td>
+                    <td><span class="tag is-white">{{(Illuminate\Support\Carbon::parse($pelicula->created_at))->format('d/m/Y H:i')}}hs</span></td>
                     <td><a href="{{route('peliculas.show',$pelicula->id)}}" class="has-text-info">{{$pelicula->titulo}}</a></td>
-                    <td>{{(Illuminate\Support\Carbon::parse($pelicula->fecha_estreno))->format('d-m-Y')}}</td>
+                    <td><span class="tag is-white">{{(Illuminate\Support\Carbon::parse($pelicula->fecha_estreno))->format('d/m/Y')}}</span></td>
                     <td>{{$pelicula->idioma}}</td>
                     <td>{{$pelicula->rating}}</td>
                     @if(auth()->user()->id === $pelicula->user_id)

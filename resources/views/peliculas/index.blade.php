@@ -19,7 +19,7 @@
     <div class="table-content">
       <table class="table is-fullwidth">
             <thead>
-                <td>Agregada</td>
+                <th>Agregada</th>
                 <th>Titulo</th>
                 <th>Estreno</th>
                 <th>Idioma</th>
@@ -47,7 +47,7 @@
                     @endif
                 </tr>
                 @empty
-                <tr>{{ __('Couldnt find any entries.') }}</tr>
+                <tr><td>{{ __('Couldn\'t find any entries.') }}</td></tr>
                 @endforelse
             </tbody>
       </table>

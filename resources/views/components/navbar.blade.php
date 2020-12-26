@@ -25,7 +25,10 @@
     {{--            <a href="/" class="navbar-item">--}}
     {{--                {{ __('Home') }}--}}
     {{--            </a>--}}
-                <a href="{{route('peliculas.index')}}" class="navbar-item">{{ __('Movies')}}</a>
+                @if(auth()->user())
+                <a href="{{route('peliculas.index')}}" class="navbar-item has-text-primary">{{ __('My movies')}}</a>
+                @endif
+                <a href="{{route('welcome')}}" class="navbar-item">{{ __('Movies')}}</a>
                 <a href="{{route('artistas.index')}}" class="navbar-item">{{ __('Artists')}}</a>
             </div>
 

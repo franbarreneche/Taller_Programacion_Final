@@ -46,7 +46,7 @@
             <div class="column">
                 <figure class="image is-2by3">
                     @if(!$pelicula->poster)
-                    <img src="https://via.placeholder.com/540x810">
+                    <img src="{{asset('img/no_movie.png')}}">
                     @elseif(filter_var($pelicula->poster, FILTER_VALIDATE_URL))
                     <img src="{{$pelicula->poster}}">
                     @else

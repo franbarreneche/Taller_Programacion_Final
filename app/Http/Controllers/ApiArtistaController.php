@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Artista;
+use Illuminate\Support\Facades\Response;
+
 
 class ApiArtistaController extends Controller
 {
@@ -21,7 +23,7 @@ class ApiArtistaController extends Controller
         ->groupBy('artistas.nombre')
         ->orderByDesc(DB::raw('count(*)'))
         ->get();
-        return $aRet;
+        return Response::json(["data" => $aRet]);
     }
     
 }

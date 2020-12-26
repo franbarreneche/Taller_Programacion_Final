@@ -30,3 +30,7 @@ El seeder de la base de datos agrega dos usuarios por defecto, con las siguiente
 | ----------- | ----------- |
 | fran@gmail.com | password |
 | david@gmail.com | password |
+
+## API
+La aplicación cuenta con una API sencilla realizada a efectos de los requerimientos del trabajo. Con el siguiente link se puede acceder a la documentación de la misma:
+- Link: https://documenter.getpostman.com/view/13457579/TVsxBmbN

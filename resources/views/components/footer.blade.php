@@ -3,7 +3,7 @@
         <div class="content has-text-centered has-text-grey-light">
             <p>
                 &copy; {{ date('Y') }} {{ config('app.name', 'Laravel') }}.
-                {{ __('All rights reserved.')}}
+                {{ __('Made with blood and tears for Taller de Programación.')}}
             </p>
             <a href="https://bulma.io">
                 <img src="https://bulma.io/images/made-with-bulma--black.png" alt="Made with Bulma" class="fortify-bulma" width="128" height="24" />

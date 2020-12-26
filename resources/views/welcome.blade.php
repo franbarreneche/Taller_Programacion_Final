@@ -68,7 +68,7 @@
                 <form action="{{route('welcome')}}" method="GET"> 
                     <div class="field has-addons">                        
                         <div class="control has-icons-left is-expanded">
-                            <input name="buscar" class="input is-large" type="text" placeholder="{{ __('Search by movie name')}}" value="{{Route::has('buscar')? Route::get('buscar') : ''}}">
+                            <input name="buscar" class="input is-large" type="text" placeholder="{{ __('Search by movie name')}}" value="{{ app('request')->input('buscar') }}">
                             <span class="icon is-left">
                                 <i class="fas fa-search"></i>
                             </span>

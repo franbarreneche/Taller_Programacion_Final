@@ -18,7 +18,7 @@ class WelcomeController extends Controller
         if (request('buscar')) $buscar = request('buscar');
         else $buscar="";
         //$peliculas = Pelicula::where("titulo","LIKE","%".$buscar."%")->orderByDesc('created_at')->simplePaginate();            
-        $peliculas = DB::table('peliculas')->where('titulo','like','%'.$buscar.'%')->simplePaginate();
+        $peliculas = DB::table('peliculas')->where('titulo','like','%'.$buscar.'%')->orderByDesc('created_at')->simplePaginate();
         $peliculas->appends(array('buscar' => request('buscar')));
         return view('welcome',["peliculas" => $peliculas]);
     }

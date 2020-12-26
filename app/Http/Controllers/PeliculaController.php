@@ -7,6 +7,8 @@ use App\Models\Pelicula;
 use App\Models\Artista;
 use App\Models\Genero;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+
 
 class PeliculaController extends Controller
 {
@@ -146,7 +148,15 @@ class PeliculaController extends Controller
     {
         $peli = Pelicula::findOrFail($id);
         if(auth()->user()->id !== $peli->user_id) abort(401);
+        $poster = $peli->poster;
+        //eliminarmos la peli        
         $peli->delete();
+        //si tenia un poster en el almacenamiento interno lo eliminamos
+        if($poster || !(filter_var($poster, FILTER_VALIDATE_URL))) {            
+            Storage::delete("public/posters/".$poster);
+        }
         return redirect()->route('peliculas.index')->with("status","movie-deleted");
     }
+
+
 }

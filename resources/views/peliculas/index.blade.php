@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title','PELICULAS')
-@section('subtitle','Listado con todas las películas')
+@section('subtitle','Listado con todas las películas de '. auth()->user()->name)
 
 @section('content')
 <div class="card">
@@ -34,7 +34,7 @@
                     <td>{{(Illuminate\Support\Carbon::parse($pelicula->fecha_estreno))->format('d-m-Y')}}</td>
                     <td>{{$pelicula->idioma}}</td>
                     <td>{{$pelicula->rating}}</td>
-                    @if(auth()->user())
+                    @if(auth()->user()->id === $pelicula->user_id)
                     <td class="is-grouped">
                         <form action="{{route('peliculas.destroy',$pelicula->id)}}" method="POST">
                         @method("DELETE")
@@ -44,9 +44,6 @@
                         <button type="submit" class="button is-small is-danger">Elim</button>
                         </form>
                     </td>
-                    @endif
-                    @if(!auth()->user())
-                    <td>{{$pelicula->user->name}}</td>
                     @endif
                 </tr>
                 @empty

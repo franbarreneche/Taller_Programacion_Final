@@ -15,7 +15,7 @@ class GeneroSeeder extends Seeder
      */
     public function run()
     {
-        $response = Http::get('https://api.themoviedb.org/3/genre/movie/list?api_key=e93600d650e78eb84e718e468e63756f&language=es-ES')['genres'];        
+        $response = Http::withOptions(['verify' => false])->get('https://api.themoviedb.org/3/genre/movie/list?api_key=e93600d650e78eb84e718e468e63756f&language=es-ES')['genres'];        
         foreach($response as $genero) {
             $nombre = $genero['name'];
             Genero::create(["nombre" => $nombre]);

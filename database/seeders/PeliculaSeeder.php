@@ -18,7 +18,7 @@ class PeliculaSeeder extends Seeder
     public function run()
     {
         for($i=1;$i<10;$i++) {
-            $response = Http::get('https://api.themoviedb.org/3/trending/movie/week?api_key=e93600d650e78eb84e718e468e63756f&language=es-ES&page='.$i)['results'];        
+            $response = Http::withOptions(['verify' => false])->get('https://api.themoviedb.org/3/trending/movie/week?api_key=e93600d650e78eb84e718e468e63756f&language=es-ES&page='.$i)['results'];        
             foreach($response as $pelicula) {                
                 Pelicula::create([
                     "titulo" => $pelicula['title'],
